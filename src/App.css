@@ -1,38 +1,319 @@
-.App {
-  text-align: center;
+:root {
+  --theme: rgba(30, 144, 255, 0.85);
+}
+body,
+html {
+  width: 100%;
+  height: 100%;
+  background: #000;
+  scroll-behavior: smooth;
+}
+* {
+  /*outline: 1px solid red;*/
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
+.wrapper {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+.head {
+  height: 3rem;
+  width: 100%;
+  background: #000;
+  position: sticky;
+  top: 0;
+  padding: 0.5rem;
+  display: flex;
+  gap: 0.8rem;
+  color: #fff;
+  align-items: center;
+  font-size: 1.8rem;
+  font-weight: bold;
+  font-family: Oswald, Sans-Serif;
+}
+.head img {
+  object-fit: cover;
+  height: 2rem;
+  width: 2rem;
+}
+.messageBody {
+  max-height: 83.5%;
+  width: 100%;
+  background: #000;
+  overflow: scroll;
+  padding-inline: 0.6rem;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;
+  /*outline: 1px solid red;*/
+}
+.msgInput {
+  height: 2.81rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 1.2rem;
+  /*outline: 1px solid white;*/
+}
+.msgInput .input {
+  height: 100%;
+  width: 96%;
+  background: black;
+  border-radius: 2rem;
+  background: #1f1f1f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.msgBox {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.input textarea {
+  position: absolute;
+  /* outline: 1px solid red;*/
+  resize: none;
+  background: transparent;
+  border: none;
+  font-size: 0.9rem;
+  left: 10%;
+  width: 70%;
+  height: 50%;
+  padding: 3px;
+  font-weight: 450;
+  font-family: Oswald;
+  color: white;
+  overflow-y: auto;
+  overflow-x: hidden;
+  text-decoration: none;
+  caret-color: var(--theme);
+}
+.input img {
+  position: absolute;
+  right: 0.6rem;
+  object-fit: cover;
+  height: 2.4rem;
+  width: 2.4rem;
+  rotate: 90deg;
+  transition: all 0.2s ease;
+}
+.input img:active {
+  scale: 0.9;
+  opacity: 0.8;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.input textarea:focus {
+  outline: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #fff;
+  opacity: 0.6; /* Firefox */
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: #fff;
+  opacity: 0.6;
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: #fff;
+  opacity: 0.6;
+}
+
+.msgIncoming {
+  height: auto;
+  min-height: 2rem;
+  max-width: 70%;
+  width: auto;
+  background-color: #fff;
+  margin: 0.3rem;
+  padding: 0.65rem;
+  border-radius: 0 0.8rem 0.8rem 0.8rem;
+  display: inline-block;
+}
+.msgOutgoing {
+  height: auto;
+  word-break: break-word;
+  min-height: 2rem;
+  max-width: 70%;
+  width: auto;
+  background-color: var(--theme);
+  color: white;
+  margin: 0.3rem;
+  padding: 0.65rem;
+  border-radius: 0.8rem 0.8rem 0 0.8rem;
+  display: inline-block;
+}
+
+.msgs {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 425;
+  font-family: Oswald, Sans-Serif;
+}
+.msgContainerI {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.msgContainerO {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+@keyframes blinkC {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+.cursor {
+  display: inline-block;
+  width: 2px;
+  height: 20px;
+  background-color: var(--theme);
+  position: absolute;
+  left: 10%;
+  animation: blinkC 1s infinite;
+}
+
+.type {
+  height: 100%;
+  width: 2rem;
+  position: absolute;
+  left: 2%;
+  z-index: 2;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  display: flex;
 }
 
-.App-link {
-  color: #61dafb;
+.type .periods {
+  height: 80%;
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+}
+.type .periods span {
+  height: 1rem;
+  width: 1rem;
+  border-radius: 50%;
+  background-color: var(--theme);
+  animation: blink ease 0.8s infinite;
 }
 
-@keyframes App-logo-spin {
+@keyframes blink {
   from {
-    transform: rotate(0deg);
+    scale: 0;
+    opacity: 1;
   }
   to {
-    transform: rotate(360deg);
+    scale: 1;
+    opacity: 0;
   }
+}
+.logout {
+  object-fit: cover;
+  height: 2rem;
+  width: 2rem;
+  filter: invert(1);
+  position: absolute;
+  right: 3%;
+  transition: all ease 0.2s;
+}
+.logout:active {
+  scale: 0.85;
+  opacity: 0.9;
+}
+
+/*removing scroll bars*/
+.input textarea::-webkit-scrollbar {
+  display: none;
+}
+.messageBody::-webkit-scrollbar {
+  display: none;
+}
+ .dpImageO{
+        background-color:var(--theme);
+        border-radius: 50%;
+        height: 1.7rem;
+        width: 1.7rem;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+}
+.dpImageO img{
+        object-fit: cover;
+        border-radius: 50%;
+        height: 1.7rem;
+        width: 1.7rem;
+ }
+ .dpImageI{
+        background-color: white;
+        border-radius: 50%;
+        height: 1.7rem;
+        width: 1.7rem;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+}
+.dpImageI img{
+        object-fit: cover;
+        border-radius: 50%;
+        height: 1.7rem;
+        width: 1.7rem;
+ }
+/* For PC devices */
+@media (min-width: 768px) {
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .wrapper {
+    height: 650px;
+    width: 340px;
+    outline: 2px solid white;
+    padding-block: 1.3rem;
+    border-radius: 2rem;
+    position: relative;
+  }
+  .msgInput {
+  height: 2.81rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 1.2rem;
+  /*outline: 1px solid white;*/
+}
 }
