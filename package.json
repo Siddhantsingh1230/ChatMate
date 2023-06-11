@@ -1,5 +1,6 @@
 {
   "name": "cm",
+  "homepage": "https://siddhantsingh1230.github.io/chatmate",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
