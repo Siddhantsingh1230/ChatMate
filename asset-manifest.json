@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/chatmate/static/css/main.673d3b48.css",
+    "main.js": "/chatmate/static/js/main.19ba226d.js",
+    "index.html": "/chatmate/index.html",
+    "main.673d3b48.css.map": "/chatmate/static/css/main.673d3b48.css.map",
+    "main.19ba226d.js.map": "/chatmate/static/js/main.19ba226d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.673d3b48.css",
+    "static/js/main.19ba226d.js"
+  ]
+}
