@@ -1,6 +1,5 @@
 {
   "name": "cm",
-  "homepage": "https://siddhantsingh1230.github.io/chatmate",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -9,6 +8,7 @@
     "@testing-library/user-event": "^13.5.0",
     "firebase": "^9.22.2",
     "firebase-react-hooks": "^0.8.0",
+    "gh-pages": "^5.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-firebase-hooks": "^5.1.1",

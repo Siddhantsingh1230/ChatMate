@@ -51,6 +51,9 @@ html {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none;
   /*outline: 1px solid red;*/
+  position: fixed;
+  bottom: 4.1rem;
+  top: 3rem;
 }
 .msgInput {
   height: 2.81rem;
