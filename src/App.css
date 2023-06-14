@@ -26,6 +26,7 @@ html {
   height: 3rem;
   width: 100%;
   background: #000;
+  /*outline: 1px solid red;*/
   position: sticky;
   top: 0;
   padding: 0.5rem;
@@ -293,6 +294,29 @@ html {
         height: 1.7rem;
         width: 1.7rem;
  }
+ .scrollDown{
+   height: 1.8rem;
+   width: 1.8em;
+   border-radius: 50%;
+   background: #373737;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   position: fixed;
+   bottom: 4.6rem;
+   right: 1.3rem;
+   transition: all 0.2s;
+   opacity: 0.8;
+ }
+ .scrollDown img{
+   height: 1rem;
+   width: 1rem;
+   border-radius: 50%;
+   filter: invert(1);
+ }
+ .scrollDown:active{
+   scale: 0.95;
+ }
 /* For PC devices */
 @media (min-width: 768px) {
   body {
@@ -318,5 +342,24 @@ html {
   position: absolute;
   bottom: 1.2rem;
   /*outline: 1px solid white;*/
+}
+.messageBody {
+  max-height: 83.5%;
+  width: 100%;
+  background: #000;
+  overflow: scroll;
+  padding-inline: 0.6rem;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;
+  /*outline: 1px solid blue;*/
+  position: absolute;
+  bottom: 4.2rem;
+  top: 4.4rem;
+}
+ .scrollDown{
+   position: absolute;
+ }
+ .head {
+  border-radius: 0.54rem 0.54rem 0 0;
 }
 }

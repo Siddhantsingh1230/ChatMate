@@ -1,5 +1,6 @@
 import MsgIn from './InputMessage';
 import MsgOut from './OutputMessage';
+import ScrollDown from './ScrollDown';
 import { useState,useEffect,useRef } from 'react';
 import { query, orderBy, collection, onSnapshot } from "firebase/firestore";
 import {auth,db} from '../configFirebase.js'
@@ -7,9 +8,12 @@ import {auth,db} from '../configFirebase.js'
 const MessageBody=()=>{
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [showArrow, setShowArrow] = useState(false);
+  
+  
   const user = auth.currentUser.uid;
   const messagesContainerRef = useRef(null);
-  
+  //for rapid scroll
   const scrollToBottom = () => {
     if (messagesContainerRef.current) {
       const container = messagesContainerRef.current;
@@ -17,6 +21,27 @@ const MessageBody=()=>{
     }
   };
   
+  //for smooth scrolling 
+  const scrollToBottomSmooth = () => {
+  if (messagesContainerRef.current) {
+    const container = messagesContainerRef.current;
+    container.scrollTo({
+      top: container.scrollHeight,
+      behavior: 'smooth'
+    });
+  }
+};
+///
+  const handleScroll=(e)=>{
+    if(e.currentTarget.scrollTop<950){
+      setShowArrow(true );
+    }
+    else{
+      setShowArrow(false);
+    }
+  }
+
+///
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
@@ -37,10 +62,11 @@ const MessageBody=()=>{
     return <div>Loading...</div>;
   }
   //Scroll to Bottom as soon as new msg is added
-  
-  
   return (
-    <div ref={messagesContainerRef} id="messageBody" className="messageBody">
+    <>
+    <div ref={messagesContainerRef} id="messageBody" className="messageBody"
+      onScroll={handleScroll}
+    >
       {
           messages.map((message, index) => (
             <>
@@ -54,11 +80,16 @@ const MessageBody=()=>{
           ))
       }
     </div>
+    {showArrow&&(<ScrollDown call={scrollToBottomSmooth}/>)}
+    </>
   );
  
 }
 
 export default MessageBody;
+
+
+
 
 
 
