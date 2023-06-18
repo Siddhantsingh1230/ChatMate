@@ -26,7 +26,6 @@ html {
   height: 3rem;
   width: 100%;
   background: #000;
-  /*outline: 1px solid red;*/
   position: sticky;
   top: 0;
   padding: 0.5rem;
@@ -54,7 +53,7 @@ html {
   /*outline: 1px solid red;*/
   position: fixed;
   bottom: 4.1rem;
-  top: 3rem;
+  top: 3.2rem;
 }
 .msgInput {
   height: 2.81rem;
@@ -141,6 +140,7 @@ html {
 
 .msgIncoming {
   height: auto;
+  word-break: break-word;
   min-height: 2rem;
   max-width: 70%;
   width: auto;
