@@ -1,6 +1,7 @@
 import MsgIn from './InputMessage';
 import MsgOut from './OutputMessage';
 import ScrollDown from './ScrollDown';
+import ImageView from './ImageView.js';
 import { useState,useEffect,useRef } from 'react';
 import { query, orderBy, collection, onSnapshot } from "firebase/firestore";
 import {auth,db} from '../configFirebase.js'
@@ -9,7 +10,8 @@ const MessageBody=()=>{
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showArrow, setShowArrow] = useState(false);
-  
+  const [showViewImageState,setShowViewImageState]=useState(false);
+  const[viewImageSrc,setViewImageSrc]=useState(null);
   
   const user = auth.currentUser.uid;
   const messagesContainerRef = useRef(null);
@@ -33,7 +35,7 @@ const MessageBody=()=>{
 };
 ///
   const handleScroll=(e)=>{
-    if(e.currentTarget.scrollTop<950){
+    if(e.currentTarget.scrollTop<20){
       setShowArrow(true );
     }
     else{
@@ -72,8 +74,16 @@ const MessageBody=()=>{
             <>
             {
             message.uid===user?
-            <MsgOut key={index} msg={message.text} src={message.photoURL}/>
-            :<MsgIn key={index} msg={message.text} src={message.photoURL}/>
+            <MsgOut type={message.type} 
+            msgImgSrc={message.msgImgSrc}
+            imgViewSrc={setViewImageSrc} 
+            showImg={setShowViewImageState} 
+              key={index} msg={message.text} src={message.photoURL}/>
+            :<MsgIn type={message.type} 
+            msgImgSrc={message.msgImgSrc}
+            imgViewSrc={setViewImageSrc}
+            showImg={setShowViewImageState} 
+              key={index} msg={message.text} src={message.photoURL}/>
             }
             </>
             
@@ -81,11 +91,14 @@ const MessageBody=()=>{
       }
     </div>
     {showArrow&&(<ScrollDown call={scrollToBottomSmooth}/>)}
+     {
+      showViewImageState&&
+      <ImageView close={setShowViewImageState} src={viewImageSrc}/>
+      }
     </>
   );
  
 }
-
 export default MessageBody;
 
 

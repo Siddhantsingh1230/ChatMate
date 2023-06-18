@@ -92,7 +92,7 @@ html {
   border: none;
   font-size: 0.9rem;
   left: 10%;
-  width: 70%;
+  width: 65%;
   height: 50%;
   padding: 3px;
   font-weight: 450;
@@ -264,59 +264,221 @@ html {
 .messageBody::-webkit-scrollbar {
   display: none;
 }
- .dpImageO{
-        background-color:var(--theme);
-        border-radius: 50%;
-        height: 1.7rem;
-        width: 1.7rem;
-        justify-content: center;
-        align-items: center;
-        display: flex;
+.dpImageO {
+  background-color: var(--theme);
+  border-radius: 50%;
+  height: 1.7rem;
+  width: 1.7rem;
+  justify-content: center;
+  align-items: center;
+  display: flex;
 }
-.dpImageO img{
-        object-fit: cover;
-        border-radius: 50%;
-        height: 1.7rem;
-        width: 1.7rem;
- }
- .dpImageI{
-        background-color: white;
-        border-radius: 50%;
-        height: 1.7rem;
-        width: 1.7rem;
-        justify-content: center;
-        align-items: center;
-        display: flex;
+.dpImageO img {
+  object-fit: cover;
+  border-radius: 50%;
+  height: 1.7rem;
+  width: 1.7rem;
 }
-.dpImageI img{
-        object-fit: cover;
-        border-radius: 50%;
-        height: 1.7rem;
-        width: 1.7rem;
+.dpImageI {
+  background-color: white;
+  border-radius: 50%;
+  height: 1.7rem;
+  width: 1.7rem;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+.dpImageI img {
+  object-fit: cover;
+  border-radius: 50%;
+  height: 1.7rem;
+  width: 1.7rem;
+}
+.scrollDown {
+  height: 1.8rem;
+  width: 1.8em;
+  border-radius: 50%;
+  background: #373737;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 4.6rem;
+  right: 1.3rem;
+  transition: all 0.2s;
+  opacity: 0.8;
+}
+.scrollDown img {
+  height: 1rem;
+  width: 1rem;
+  border-radius: 50%;
+  filter: invert(1);
+}
+.scrollDown:active {
+  scale: 0.95;
+}
+.input #uploadImg {
+  position: absolute;
+  right: 3.5rem;
+  object-fit: cover;
+  height: 1.6rem;
+  width: 1.6rem;
+  rotate: 360deg;
+  transform: scaleX(-1);
+  transition: all 0.2s ease;
+}
+
+.fileUploadContainer {
+  height: 100%;
+  width: 100%;
+  background: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1.5rem;
+  position: fixed;
+  z-index: 99;
+  top: 0;
+}
+.imgFile {
+  border-radius: 1rem;
+  height: 50%;
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: hsl(221, 83.2%, 7%);
+  animation: comein ease-in 0.5s;
+}
+@keyframes comein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.btnContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 2.2rem;
+  justify-content: center;
+}
+.actionBtn {
+  border-radius: 1.56rem;
+  padding: 0.7rem 1.3rem;
+  background-color: hsl(221, 83.2%, 15.3%);
+  color: hsl(221, 83.2%, 54.3%);
+  transition: all 0.2s;
+  font-weight: 600;
+  font-family: Oswald, Sans-Serif;
+}
+#upload {
+  display: none;
+}
+.actionBtn:active {
+  scale: 0.9;
+  filter: invert(0.08);
+}
+.expanded {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.76);
+  z-index: 9999;
+  opacity: 0;
+  border-radius: 0;
+  background-size: contain;
+  animation: fade ease-in 0.5s forwards;
+  border: none;
+}
+@keyframes fade {
+  to {
+    opacity: 1;
+  }
+}
+.backBtn {
+  position: absolute;
+  top: 3rem;
+  left: 2rem;
+  background-color: hsl(221, 83.2%, 13.3%);
+  color: hsl(221, 83.2%, 54.3%);
+  height: 1rem;
+  font-weight: 500;
+  width: 3.5rem;
+  padding: 1rem 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+  border-radius: 2rem;
+  transition: all ease 0.2s;
+  font-weight: 400;
+  font-family: Sans-Serif;
+}
+.backBtn:active {
+  scale: 0.9;
+}
+
+.imgViewContainer {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(4px);
+}
+.imgViewContainer .closeBtn {
+  position: absolute;
+  width: 2.4rem;
+  height: 2.4rem;
+  border: 1.67px solid hsl(221, 83.2%, 25%);
+  top: 1.2rem;
+  font-weight: 500;
+  font-size: 1.4rem;
+  font-family: Consolas;
+  right: 1.7rem;
+  color: hsl(221, 83.2%, 55%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  scale: 0.97;
+  border-radius: 0.5rem;
+  transition: all 0.3s;
+}
+.imgViewContainer .closeBtn:active {
+  scale: 0.9;
+}
+.imgBg {
+  height: 100%;
+  width: 100%;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+ .imgMsg{
+   width: 120px;
+   height: 160px;
+   object-fit:cover;
+   border-radius: 0.8rem 0.8rem 0.8rem 0.8rem;
  }
- .scrollDown{
-   height: 1.8rem;
-   width: 1.8em;
-   border-radius: 50%;
-   background: #373737;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   position: fixed;
-   bottom: 4.6rem;
-   right: 1.3rem;
-   transition: all 0.2s;
-   opacity: 0.8;
- }
- .scrollDown img{
-   height: 1rem;
-   width: 1rem;
-   border-radius: 50%;
-   filter: invert(1);
- }
- .scrollDown:active{
-   scale: 0.95;
- }
+ .imgP0{
+ padding: 1.5px;
+}
+
+
 /* For PC devices */
 @media (min-width: 768px) {
   body {
@@ -334,32 +496,44 @@ html {
     position: relative;
   }
   .msgInput {
-  height: 2.81rem;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  bottom: 1.2rem;
-  /*outline: 1px solid white;*/
-}
-.messageBody {
-  max-height: 83.5%;
-  width: 100%;
-  background: #000;
-  overflow: scroll;
-  padding-inline: 0.6rem;
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none;
-  /*outline: 1px solid blue;*/
-  position: absolute;
-  bottom: 4.2rem;
-  top: 4.4rem;
-}
- .scrollDown{
-   position: absolute;
- }
- .head {
-  border-radius: 0.54rem 0.54rem 0 0;
-}
+    height: 2.81rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 1.2rem;
+    /*outline: 1px solid white;*/
+  }
+  .messageBody {
+    max-height: 83.5%;
+    width: 100%;
+    background: #000;
+    overflow: scroll;
+    padding-inline: 0.6rem;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none;
+    /*outline: 1px solid blue;*/
+    position: absolute;
+    bottom: 4.2rem;
+    top: 4.4rem;
+  }
+  .scrollDown {
+    position: absolute;
+  }
+  .head {
+    border-radius: 0.54rem 0.54rem 0 0;
+  }
+  .fileUploadContainer {
+    position: absolute;
+    top: 0;
+    border-radius: 2rem;
+  }
+  .expanded {
+    border-radius: 2rem;
+  }
+  .imgViewContainer {
+    position: absolute;
+    border-radius: 2rem;
+  }
 }

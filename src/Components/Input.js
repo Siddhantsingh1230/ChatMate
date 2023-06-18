@@ -6,7 +6,7 @@ import TyperDot from './TyperDot.js';
 import Cursor from './Cursor.js';
 /////////////////////////
 
-const Input=()=>{
+const Input=({uploadState})=>{
   const [inputValue,setInputValue]=useState('');
   
   //handling input focus and blur
@@ -27,7 +27,9 @@ const Input=()=>{
       text: text,
       uid: uid,
       photoURL: photoURL,
-      createdAt: serverTimestamp()
+      createdAt: serverTimestamp(),
+      type:'text',
+      msgImgSrc:''
     };
     await addDoc(messagesRef, message);
     console.log("Message added successfully!");
@@ -67,6 +69,8 @@ function removeLeadingNewlines(text) {
               placeholder="Type here..."
             ></textarea>
           </div>
+          <img onClick={()=>{          uploadState(true)
+          }} id="uploadImg" src="images/clip.png" alt="upload" />
           <img onClick={sendMsg} id="send" src="images/send.png" alt="send" />
         </div>
       </div>
